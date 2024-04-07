@@ -10,9 +10,10 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text.RegularExpressions;
 using AngleSharp.Common;
+using Azure.Identity;
+using Duende.IdentityServer.Models;
+using Duende.IdentityServer.Test;
 using EnsureThat;
-using IdentityServer4.Models;
-using IdentityServer4.Test;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.Json;
@@ -132,6 +133,24 @@ namespace Microsoft.Health.Fhir.Web
             }
 
             return app;
+        }
+
+        /// <summary>
+        /// The configuration builder
+        /// </summary>
+        /// <param name="configurationBuilder">The configuration builder.</param>
+        /// <param name="existingConfiguration">Existing Configuration.</param>
+        /// <returns>The same configuration builder.</returns>
+        public static IConfigurationBuilder AddAzureKeyVaultConfiguration(this IConfigurationBuilder configurationBuilder, IConfigurationRoot existingConfiguration)
+        {
+            var keyVaultEndpoint = existingConfiguration["KeyVault:Endpoint"];
+            if (!string.IsNullOrEmpty(keyVaultEndpoint))
+            {
+                var credential = new DefaultAzureCredential();
+                configurationBuilder.AddAzureKeyVault(new System.Uri(keyVaultEndpoint), credential);
+            }
+
+            return configurationBuilder;
         }
 
         /// <summary>

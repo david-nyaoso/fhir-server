@@ -20,12 +20,18 @@
   <Choose>
     <When Condition="'$(TargetFramework)' == 'net8.0'">
       <PropertyGroup>
-        <AspNetPackageVersion>8.0.0</AspNetPackageVersion>
+        <AspNetPackageVersion>8.0.3</AspNetPackageVersion>
+        <IdentityServerVersion>7.0.4</IdentityServerVersion>
+        <EntityFrameworkCoreVersion>8.0.3</EntityFrameworkCoreVersion>
+        <SystemTextEncodingsWebVersion>8.0.0</SystemTextEncodingsWebVersion>
       </PropertyGroup>
     </When>
     <Otherwise>
       <PropertyGroup>
         <AspNetPackageVersion>6.0.23</AspNetPackageVersion>
+        <IdentityServerVersion>6.3.8</IdentityServerVersion>
+        <EntityFrameworkCoreVersion>7.0.17</EntityFrameworkCoreVersion>
+        <SystemTextEncodingsWebVersion>7.0.0</SystemTextEncodingsWebVersion>
       </PropertyGroup>
     </Otherwise>
   </Choose>
@@ -50,7 +56,7 @@
     <PackageVersion Include="Hl7.Fhir.STU3" Version="$(Hl7FhirVersion)" />
     <PackageVersion Include="Hl7.Fhir.Support.Poco" Version="$(Hl7FhirVersion)" />
     <PackageVersion Include="Hl7.FhirPath" Version="$(Hl7FhirVersion)" />
-    <PackageVersion Include="IdentityServer4" Version="4.1.2" />
+    <PackageVersion Include="Duende.IdentityServer" Version="$(IdentityServerVersion)" />
     <PackageVersion Include="MediatR" Version="12.1.1" />
     <PackageVersion Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.22.0" />
     <PackageVersion Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="$(AspNetPackageVersion)" />
@@ -105,6 +111,8 @@
     <PackageVersion Include="prometheus-net.AspNetCore" Version="8.0.1" />
     <PackageVersion Include="prometheus-net.DotNetRuntime" Version="4.4.0" />
     <PackageVersion Include="prometheus-net.SystemMetrics" Version="3.1.0" />
+    <PackageVersion Include="Serilog.AspNetCore" Version="8.0.2-dev-00338" />
+    <PackageVersion Include="Serilog.Expressions" Version="4.0.1-dev-00154" />    
     <PackageVersion Include="StyleCop.Analyzers" Version="1.2.0-beta.556" />
     <PackageVersion Include="System.Collections.Immutable" Version="8.0.0" />
     <PackageVersion Include="System.CommandLine.NamingConventionBinder" Version="2.0.0-beta4.22272.1" />
